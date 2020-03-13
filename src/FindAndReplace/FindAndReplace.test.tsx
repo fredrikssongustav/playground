@@ -1,6 +1,12 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { FindAndReplace } from './FindAndReplace';
+import { FindAndReplace, FindAndReplaceProps } from './FindAndReplace';
+
+const findAndReplaceProps: FindAndReplaceProps = {
+  replaceThisInit: 'a',
+  withThisInit: 'gustav',
+  forThisInit: 'aba',
+};
 
 describe('FindAndReplace component', () => {
   describe('it should have the necessary components', () => {
@@ -29,11 +35,8 @@ describe('FindAndReplace component', () => {
     });
 
     it('has on mount a button that execute the change on the original text', async () => {
-      const { getByTestId } = render(<FindAndReplace />);
+      const { getByTestId } = render(<FindAndReplace {...findAndReplaceProps} />);
 
-      await fireEvent.change(getByTestId('replace-this-input'), { target: { value: 'a' } });
-      await fireEvent.change(getByTestId('with-this-input'), { target: { value: 'gustav' } });
-      await fireEvent.change(getByTestId('for-this-input'), { target: { value: 'aba' } });
       await fireEvent.click(getByTestId('make-replace-button'));
 
       expect(getByTestId('for-this-input')).toHaveValue('gustavbgustav');

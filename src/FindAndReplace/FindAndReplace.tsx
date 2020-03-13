@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import './FindAndReplace.css';
 
 const findAndReplaceMethod = (replaceThis: string, withThis: string, forThis: string): string => {
   const replaceRegex = new RegExp(replaceThis, 'g');
   return forThis.replace(replaceRegex, withThis);
 };
 
-export const FindAndReplace: React.FC = () => {
-  const [replaceThis, setReplaceThis] = useState<string>('u');
-  const [withThis, setWithThis] = useState<string>('q');
-  const [forThis, setForThis] = useState<string>('gustav');
+export type FindAndReplaceProps = {
+  replaceThisInit?: string;
+  withThisInit?: string;
+  forThisInit?: string;
+}
+
+export const FindAndReplace: React.FC<FindAndReplaceProps> = ({
+  replaceThisInit = 'replace this',
+  withThisInit = 'with this',
+  forThisInit = 'for this',
+}: FindAndReplaceProps) => {
+  const [replaceThis, setReplaceThis] = useState<string>(replaceThisInit);
+  const [withThis, setWithThis] = useState<string>(withThisInit);
+  const [forThis, setForThis] = useState<string>(forThisInit);
   const color = '#FFAE42';
   const bgColor = '#FFFF99';
 
@@ -48,6 +59,7 @@ export const FindAndReplace: React.FC = () => {
         data-testid="for-this-input"
         placeholder="In this text field"
         value={forThis}
+        rows={10}
         onChange={(e): void => updateField<string, HTMLTextAreaElement>(e, setForThis)}
       />
       <button
