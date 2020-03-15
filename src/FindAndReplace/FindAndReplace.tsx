@@ -69,8 +69,7 @@ export const FindAndReplace: React.FC<FindAndReplaceProps> = ({
         type="button"
         onClick={updateForThis}
       >
-        Submit
-
+        Apply changes to original text
       </button>
       {replaceThis
       && withThis

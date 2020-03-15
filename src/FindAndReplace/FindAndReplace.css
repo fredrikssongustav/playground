@@ -1,0 +1,39 @@
+input, textarea, .textarea {
+    font-size: 1rem;
+    background: whitesmoke;
+    margin: 1em 0;
+    border: 1px solid ivory;
+    box-shadow: 0 0 0.5em 0 grey;
+    border-radius: 5px;
+    padding: 0.2rem;
+    
+}
+
+.flex-container{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 3em;
+}
+
+
+button {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    box-shadow: 0 0 0.5em 0 grey;
+    background:darkslategray;
+    text-transform: uppercase;
+	border-radius: 5px;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:1rem;
+	padding:0.5rem;
+}
+
+button:hover {
+    background:white;
+    color: darkslateblue;
+}
+
+        
