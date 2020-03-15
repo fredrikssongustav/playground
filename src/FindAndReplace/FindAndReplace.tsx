@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './FindAndReplace.css';
 
-const findAndReplaceMethod = (replaceThis: string, withThis: string, forThis: string): string => {
+export const findAndReplaceMethod = (replaceThis: string, withThis: string, forThis: string): string => {
   const replaceRegex = new RegExp(replaceThis, 'g');
-  return forThis.replace(replaceRegex, withThis);
+  const newlineRegex = new RegExp('\n', 'g');
+
+  return forThis.replace(replaceRegex, withThis).replace(newlineRegex, '<br/>');
 };
 
 export type FindAndReplaceProps = {

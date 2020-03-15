@@ -48,4 +48,14 @@ describe('FindAndReplace component', () => {
       expect(getByTestId('preview-span').innerHTML).toBe('<span style=\"color:#FFAE42; background:#FFFF99\">gustav</span>b<span style=\"color:#FFAE42; background:#FFFF99\">gustav</span>');
     });
   });
+
+  describe('should replace things accurately', () => {
+    it('for standard case finds and replace string values', () => {
+      expect(findAndReplaceMethod('a', 'b', 'abc')).toBe('bbc');
+    });
+
+    it('handles edge cases newline', () => {
+      expect(findAndReplaceMethod('a', '\n', 'abc')).toBe('<br/>bc');
+    });
+  });
 });
