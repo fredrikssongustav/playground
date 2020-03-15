@@ -73,7 +73,7 @@ export const FindAndReplace: React.FC<FindAndReplaceProps> = ({
       {replaceThis
       && withThis
       && forThis
-      && <span id="preview" data-testid="preview-span" />}
+      && <div className="textarea"><span id="preview" data-testid="preview-span" /></div>}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { FindAndReplace, FindAndReplaceProps } from './FindAndReplace';
+import { FindAndReplace, FindAndReplaceProps, findAndReplaceMethod } from './FindAndReplace';
 
 const findAndReplaceProps: FindAndReplaceProps = {
   replaceThisInit: 'a',
@@ -40,6 +40,12 @@ describe('FindAndReplace component', () => {
       await fireEvent.click(getByTestId('make-replace-button'));
 
       expect(getByTestId('for-this-input')).toHaveValue('gustavbgustav');
+    });
+
+    it('show changes preview', async () => {
+      const { getByTestId } = render(<FindAndReplace {...findAndReplaceProps} />);
+
+      expect(getByTestId('preview-span').innerHTML).toBe('<span style=\"color:#FFAE42; background:#FFFF99\">gustav</span>b<span style=\"color:#FFAE42; background:#FFFF99\">gustav</span>');
     });
   });
 });
